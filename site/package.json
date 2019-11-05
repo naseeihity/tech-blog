@@ -1,0 +1,19 @@
+{
+  "name": "site",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Coaco <citizenshipsss49@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "gatsby": "^2.17.6",
+    "gatsby-theme-minimal": "^1.0.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}
