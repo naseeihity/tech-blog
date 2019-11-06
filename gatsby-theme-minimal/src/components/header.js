@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import style from '../style/header.module.css'
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, subTitle }) => (
 	<header className={style.header}>
 		<div className={style.box}>
 			<h1 className={style.title}>
@@ -11,11 +11,7 @@ const Header = ({ siteTitle }) => (
 					{siteTitle}
 				</Link>
 			</h1>
-			<p className={style.content}>
-				A Student
-				<br />A Programmer
-				<br />A Fan Of Director Hou
-			</p>
+			<p dangerouslySetInnerHTML={{ __html: subTitle }} className={style.content}></p>
 		</div>
 	</header>
 )
@@ -25,7 +21,8 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-	siteTitle: `COACO`
+	siteTitle: 'A Blog',
+	subTitle: 'Hello Wolrd'
 }
 
 export default Header

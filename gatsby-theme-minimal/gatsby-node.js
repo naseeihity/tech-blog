@@ -1,14 +1,26 @@
 const fs = require('fs')
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.createPages = ({ graphql, actions }) => {
+// Make sure the data directory exists
+exports.onPreBootstrap = ({ reporter }, options) => {
+	const contentPath = options.contentPath || 'content'
+	if (!fs.existsSync(contentPath)) {
+		reporter.info(`creating the ${contentPath} directory`)
+		fs.mkdirSync(contentPath)
+	}
+}
+
+exports.createPages = ({ graphql, actions }, options) => {
 	const { createPage } = actions
 	const blogPost = require.resolve(`./src/templates/blog-post.js`)
-	const basePath = '/'
+	const blogList = require.resolve('./src/templates/blog-list.js')
+	const basePath = options.basePath || '/'
+
 	createPage({
 		path: basePath,
-		component: blogPost
+		component: blogList
 	})
+
 	return graphql(
 		`
 			{
@@ -35,11 +47,9 @@ exports.createPages = ({ graphql, actions }) => {
 
 		// Create blog posts pages.
 		const posts = result.data.allMdx.edges
-
 		posts.forEach((post, index) => {
 			const previous = index === posts.length - 1 ? null : posts[index + 1].node
 			const next = index === 0 ? null : posts[index - 1].node
-
 			createPage({
 				path: post.node.fields.slug,
 				component: blogPost,
@@ -56,8 +66,8 @@ exports.createPages = ({ graphql, actions }) => {
 		const numPages = Math.ceil(posts.length / postsPerPage)
 		Array.from({ length: numPages }).forEach((_, i) => {
 			createPage({
-				path: i === 0 ? `/` : `/page/${i + 1}`,
-				component: require.resolve('./src/templates/blog-list.js'),
+				path: i === 0 ? basePath : `${basePath}page/${i + 1}`,
+				component: blogList,
 				context: {
 					limit: postsPerPage,
 					skip: i * postsPerPage,
@@ -66,14 +76,11 @@ exports.createPages = ({ graphql, actions }) => {
 				}
 			})
 		})
-
-		return null
 	})
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
 	const { createNodeField } = actions
-	console.log(node.internal.type)
 	if (node.internal.type === 'Mdx') {
 		const value = createFilePath({ node, getNode })
 		createNodeField({
@@ -93,13 +100,4 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 			modules: [require.resolve(__dirname, 'src'), 'node_modules']
 		}
 	})
-}
-
-// Make sure the data directory exists
-exports.onPreBootstrap = ({ reporter }) => {
-	const contentPath = 'content'
-	if (!fs.existsSync(contentPath)) {
-		reporter.info(`creating the ${contentPath} directory`)
-		fs.mkdirSync(contentPath)
-	}
 }

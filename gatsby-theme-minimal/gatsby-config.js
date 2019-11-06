@@ -1,9 +1,11 @@
 const mdxFeed = require('gatsby-plugin-mdx/feed')
 
-module.exports = {
+module.exports = ({ contentPath = 'content', basePath = '/', trackingId = '' }) => ({
 	siteMetadata: {
 		title: `WebSite title`,
+		sutTitle: 'WebSite subTitle',
 		description: `A description of your website.`,
+		keywords: ['blog', 'gatsby', 'theme', 'naseeihity'],
 		author: `@authorName`,
 		siteUrl: 'https://siteUrl'
 	},
@@ -14,38 +16,21 @@ module.exports = {
 			options: {
 				extensions: ['.md', `.mdx`],
 				gatsbyRemarkPlugins: [
-					{ resolve: 'gatsby-remark-autolink-headers' },
-					{ resolve: 'gatsby-remark-prismjs' },
-					{ resolve: 'gatsby-remark-smartypants' }
-				]
-			}
-		},
-		// A Gatsby source plugin for sourcing data into your Gatsby application from your local filesystem
-		{
-			resolve: `gatsby-source-filesystem`,
-			options: {
-				path: `content`,
-				name: `content`
-			}
-		},
-		// the manifest of PWA
-		{
-			resolve: `gatsby-plugin-manifest`,
-			options: {
-				name: `site name`,
-				short_name: `site short name`,
-				start_url: `/`,
-				background_color: `#ffffff`,
-				theme_color: `aliceblue`,
-				display: `minimal-ui`,
-				icon: '' // This path is relative to the root of the site.
-			}
-		},
-		// Parses Markdown files using Remark.
-		{
-			resolve: `gatsby-transformer-remark`,
-			options: {
-				plugins: [
+					{
+						resolve: 'gatsby-remark-prismjs',
+						options: {
+							inlineCodeMarker: '÷'
+						}
+					},
+					{
+						resolve: `gatsby-remark-katex`,
+						options: {
+							strict: `ignore`
+						}
+					},
+					'gatsby-remark-copy-linked-files',
+					// 'gatsby-remark-autolink-headers',
+					'gatsby-remark-smartypants',
 					{
 						resolve: `gatsby-remark-images`,
 						options: {
@@ -59,15 +44,6 @@ module.exports = {
 							wrapperStyle: `margin-bottom: 1.25rem`
 						}
 					},
-					'gatsby-remark-autolink-headers',
-					{
-						resolve: 'gatsby-remark-prismjs',
-						options: {
-							inlineCodeMarker: '÷'
-						}
-					},
-					'gatsby-remark-copy-linked-files',
-					'gatsby-remark-smartypants',
 					{
 						resolve: 'gatsby-remark-external-links',
 						options: {
@@ -75,6 +51,16 @@ module.exports = {
 						}
 					}
 				]
+			}
+		},
+		`gatsby-transformer-sharp`,
+		`gatsby-plugin-sharp`,
+		// A Gatsby source plugin for sourcing data into your Gatsby application from your local filesystem
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				path: contentPath,
+				name: `content`
 			}
 		},
 		// Create an RSS feed (or multiple feeds) for your Gatsby site.
@@ -86,20 +72,17 @@ module.exports = {
 		{
 			resolve: `gatsby-plugin-google-analytics`,
 			options: {
-				trackingId: 'yourTracking ID'
+				trackingId: trackingId
 			}
 		},
 		//  lets you control your document head using their React component
 		`gatsby-plugin-react-helmet`,
 		// Create a sitemap for your Gatsby site
 		`gatsby-plugin-sitemap`,
-		//  several image processing functions, processing your images in a variety of ways including resizing, cropping, and creating responsive images
-		`gatsby-plugin-sharp`,
-		`gatsby-transformer-sharp`,
 		// avoids the browser having to refresh the whole page when navigating between local pages
 		`gatsby-plugin-catch-links`,
 		// this (optional) plugin enables Progressive Web App + Offline functionality
 		// To learn more, visit: https://gatsby.app/offline
 		'gatsby-plugin-offline'
 	]
-}
+})

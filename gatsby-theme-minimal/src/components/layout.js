@@ -1,35 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
-
+import { MDXProvider } from '@mdx-js/react'
+import Image from './Image'
 import Header from './header'
 import Footer from './footer'
-import '../style/layout.css'
 import '../style/typo.css'
 import '../style/custom.css'
-import mainStyle from '../style/main.module.css'
+import mainStyle from '../style/layout.module.css'
 
-const Layout = ({ children }) => (
-	<StaticQuery
-		query={graphql`
-			query SiteTitleQuery {
-				site {
-					siteMetadata {
-						title
-					}
-				}
-			}
-		`}
-		render={data => (
-			<>
-				<Header siteTitle={data.site.siteMetadata.title} />
-				<div className={mainStyle.outer}>
-					<main className={mainStyle.box}>{children}</main>
-				</div>
-				<Footer />
-			</>
-		)}
-	/>
+const shortcodes = { Image }
+const Layout = ({ title, subTitle, children }) => (
+	<MDXProvider components={shortcodes}>
+		<Header siteTitle={title} subTitle={subTitle} />
+		<div className={mainStyle.outer}>
+			<main className={mainStyle.box}>{children}</main>
+		</div>
+		<Footer />
+	</MDXProvider>
 )
 
 Layout.propTypes = {

@@ -4,16 +4,18 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer'
 
-import mainStyle from '../style/main.module.css'
+import GitTalk from '../components/gittalk'
+import mainStyle from '../style/layout.module.css'
 
 class BlogPostTemplate extends React.Component {
 	render() {
 		const post = this.props.data.mdx
 		const siteTitle = this.props.data.site.siteMetadata.title
+		const subTitle = this.props.data.site.siteMetadata.subTitle
 		const { previous, next } = this.props.pageContext
 
 		return (
-			<Layout location={this.props.location} title={siteTitle}>
+			<Layout location={this.props.location} title={siteTitle} subTitle={subTitle}>
 				<SEO title={post.frontmatter.title} description={post.frontmatter.description || post.excerpt} />
 				<h1>{post.frontmatter.title}</h1>
 				<small>{post.frontmatter.date}</small>
@@ -46,6 +48,7 @@ class BlogPostTemplate extends React.Component {
 						)}
 					</li>
 				</ul>
+				<GitTalk title={siteTitle} location={this.props.location} />
 			</Layout>
 		)
 	}
@@ -59,6 +62,7 @@ export const pageQuery = graphql`
 			siteMetadata {
 				title
 				author
+				subTitle
 			}
 		}
 		mdx(fields: { slug: { eq: $slug } }) {

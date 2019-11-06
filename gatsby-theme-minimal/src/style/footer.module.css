@@ -5,11 +5,12 @@
 	padding: 25px;
 	width: 12rem;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
 	font-size: 0.875rem;
+	color: #ccc;
 }
 
 .link {

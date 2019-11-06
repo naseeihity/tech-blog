@@ -75,6 +75,42 @@ blockquote p {
 	font-style: normal;
 }
 
+img {
+	display: block;
+	max-width: 700px;
+	margin: 0 auto;
+	margin-bottom: 1.45rem;
+	box-shadow: 0 0 4px 0 rgba(232, 237, 250, 0.6), 0 1px 2px 0 rgba(232, 237, 250, 0.5);
+}
 .medium-zoom--opened header p {
 	color: #fff;
+}
+
+.gatsby-highlight-code-line {
+	display: block;
+	margin-right: -1.3125rem;
+	margin-left: 1.3125rem;
+	padding-right: 1em;
+	padding-left: 1.25em;
+	border-left: 0.25em solid #ffa7c4;
+}
+
+.gatsby-highlight {
+	margin-bottom: 1.75rem;
+	margin-left: 1.3125rem;
+	margin-right: -1.3125rem;
+	border-radius: 10px;
+	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+}
+
+@media (max-width: 672px) {
+	.gatsby-highlight {
+		border-radius: 0;
+	}
+}
+
+.gatsby-highlight pre[class*='language-'] {
+	float: left;
+	min-width: 100%;
 }

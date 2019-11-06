@@ -9,6 +9,8 @@ class BlogIndex extends React.Component {
 	render() {
 		const { data } = this.props
 		const siteTitle = data.site.siteMetadata.title
+		const subTitle = data.site.siteMetadata.subTitle
+		const keywords = data.site.siteMetadata.keywords
 		const posts = data.allMdx.edges
 		const { currentPage, numPages } = this.props.pageContext
 		const isFirst = currentPage === 1
@@ -17,26 +19,27 @@ class BlogIndex extends React.Component {
 		const nextPage = (currentPage + 1).toString()
 
 		return (
-			<Layout location={this.props.location} title={siteTitle}>
-				<SEO title="Kevin's blog" keywords={[`blog`, `movie`]} />
-				{posts.map(({ node }) => {
-					const title = node.frontmatter.title || node.fields.slug
-					return (
-						<div style={{ marginBottom: '3.5rem', marginTop: '2px' }} key={node.fields.slug}>
-							<h3>
-								<Link style={{ boxShadow: `none`, color: '#000' }} to={node.fields.slug}>
-									{title}
-								</Link>
-							</h3>
-							<small>{node.frontmatter.date}</small>
-							<p
-								dangerouslySetInnerHTML={{
-									__html: node.frontmatter.description || node.excerpt
-								}}
-							/>
-						</div>
-					)
-				})}
+			<Layout location={this.props.location} title={siteTitle} subTitle={subTitle}>
+				<SEO title="HomePage" keywords={keywords} />
+				{posts &&
+					posts.map(({ node }) => {
+						const title = node.frontmatter.title || node.fields.slug
+						return (
+							<div style={{ marginBottom: '3.5rem', marginTop: '2px' }} key={node.fields.slug}>
+								<h3>
+									<Link style={{ boxShadow: `none`, color: '#000' }} to={node.fields.slug}>
+										{title}
+									</Link>
+								</h3>
+								<small>{node.frontmatter.date}</small>
+								<p
+									dangerouslySetInnerHTML={{
+										__html: node.frontmatter.description || node.excerpt
+									}}
+								/>
+							</div>
+						)
+					})}
 				<ul className={style.box}>
 					{!isFirst && (
 						<Link to={`/${prevPage === 1 ? '' : 'page/' + Number(prevPage)}`} rel="prev">
@@ -69,6 +72,8 @@ export const pageQuery = graphql`
 		site {
 			siteMetadata {
 				title
+				subTitle
+				keywords
 			}
 		}
 		allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
