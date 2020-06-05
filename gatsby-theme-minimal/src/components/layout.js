@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { MDXProvider } from "@mdx-js/react";
-import Image from "./Image";
+import Image from "./image";
 import Header from "./header";
 import Footer from "./footer";
-import "../style/Layout.css";
+import "../style/layout.css";
 import "../style/typo.css";
 import "../style/custom.css";
 import mainStyle from "../style/main.module.css";
