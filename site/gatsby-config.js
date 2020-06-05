@@ -15,7 +15,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-theme-minimal`,
+      resolve: `gatsby-theme-coaco`,
       options: {
         contentPath: "content",
         basePath: "/",
