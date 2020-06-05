@@ -1,116 +1,87 @@
 body {
-	width: 100%;
-	margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 #___gatsby {
-	max-width: 1440px;
-	margin: 0 auto;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 p {
-	font-size: 0.95rem;
-	line-height: 1.8;
-	font-weight: 400;
-	margin-bottom: 1.5rem;
-	letter-spacing: 1px;
-	color: #333;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  color: #333;
+  text-align: justify;
 }
 
 h1 {
-	font-size: 2.5rem;
-	margin-bottom: 2.1rem;
-	text-transform: uppercase;
+  font-size: 2.5rem;
+  margin-bottom: 2.1rem;
+  text-transform: uppercase;
 }
 
 h3 a {
-	padding: 1rem 0;
-	text-transform: uppercase;
-	font-weight: 500;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 h3 a:hover {
-	text-decoration: none;
-	color: #777 !important;
+  text-decoration: none;
+  color: #777 !important;
 }
 
 h3 + small {
-	display: inline-block;
-	margin-bottom: 1rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+h1 + small {
+  display: inline-block;
+  margin-bottom: 2rem;
 }
 
 hr {
-	height: 1px;
-	width: 20%;
-	margin: 3rem auto;
-	background: #ddd;
+  height: 1px;
+  width: 20%;
+  margin: 3rem auto;
+  background: #ddd;
 }
 
 blockquote {
-	border-left: 4px solid #f1f2f3;
-	padding: 0.2em 1.5em;
+  border-left: 4px solid #f1f2f3;
+  padding: 0.2em 1.5em;
 }
 
 blockquote,
 blockquote p {
-	color: #666;
-	font-family: Cambay, 'Noto Serif', 'Noto Serif SC', STSong, PingFang SC, SimSun, sans-serif;
-	font-weight: 400;
-	font-size: 0.85rem;
+  color: #666;
+  font-family: Cambay, "Noto Serif SC", STSong, PingFang SC, SimSun, sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 
 @font-face {
-	font-family: 'Cambay';
-	font-display: auto;
-	src: url('../fonts/Cambay-Regular.ttf');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Cambay";
+  font-display: auto;
+  src: url("../fonts/Cambay-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-	font-family: 'Montserrat';
-	font-display: auto;
-	src: url('../fonts/Montserrat-Regular.ttf');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "Montserrat";
+  font-display: auto;
+  src: url("../fonts/Montserrat-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
-img {
-	display: block;
-	max-width: 700px;
-	margin: 0 auto;
-	margin-bottom: 1.45rem;
-	box-shadow: 0 0 4px 0 rgba(232, 237, 250, 0.6), 0 1px 2px 0 rgba(232, 237, 250, 0.5);
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600&display=swap");
+
 .medium-zoom--opened header p {
-	color: #fff;
-}
-
-.gatsby-highlight-code-line {
-	display: block;
-	margin-right: -1.3125rem;
-	margin-left: 1.3125rem;
-	padding-right: 1em;
-	padding-left: 1.25em;
-	border-left: 0.25em solid #ffa7c4;
-}
-
-.gatsby-highlight {
-	margin-bottom: 1.75rem;
-	margin-left: 1.3125rem;
-	margin-right: -1.3125rem;
-	border-radius: 10px;
-	-webkit-overflow-scrolling: touch;
-	overflow: auto;
-}
-
-@media (max-width: 672px) {
-	.gatsby-highlight {
-		border-radius: 0;
-	}
-}
-
-.gatsby-highlight pre[class*='language-'] {
-	float: left;
-	min-width: 100%;
+  color: #fff;
 }

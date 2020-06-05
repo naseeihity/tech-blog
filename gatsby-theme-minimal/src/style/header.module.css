@@ -1,64 +1,68 @@
 .header {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 9999;
-	background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: transparent;
 }
 
 .box {
-	margin: 0 auto;
-	padding: 35px 35px 0px 35px;
-	background: rgba(255, 255, 255, 0.5);
+  margin: 0 auto;
+  padding: 35px 35px 0px 35px;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .title {
-	text-align: right;
+  text-align: right;
 }
 
 .link {
-	color: #000;
-	font-size: 1.5rem;
-	line-height: 2;
-	text-transform: uppercase;
-	font-family: 'Montserrat';
-	font-weight: normal;
-	text-decoration: none;
+  color: #000;
+  font-size: 1.5rem;
+  line-height: 2;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: normal;
+  text-decoration: none;
 }
 
 .link:hover {
-	text-decoration: none;
-	color: #777;
+  text-decoration: none;
+  color: #777;
 }
 
 .content {
-	width: 11.875rem;
-	font-family: 'Montserrat';
-	text-align: right;
-	font-size: 14px;
-	line-height: 2;
-	color: #333;
-	margin-top: 10px;
-	padding: 0 5px;
+  width: 11.875rem;
+  font-family: "Montserrat";
+  text-align: right;
+  font-size: 14px;
+  line-height: 2;
+  color: #333;
+  margin-top: 10px;
+  padding: 0 5px;
 }
 
 @media only screen and (max-width: 768px) {
-	.header {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		margin: auto;
-		z-index: 999;
-		background: transparent;
-		text-decoration: underline;
-	}
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 999;
+    background: transparent;
+    text-decoration: none;
+  }
 
-	.title {
-		text-align: center;
-	}
+  .link {
+    font-size: 1.8rem;
+  }
 
-	.content {
-		display: none;
-	}
+  .title {
+    text-align: center;
+  }
+
+  .content {
+    display: none;
+  }
 }
