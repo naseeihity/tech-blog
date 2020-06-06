@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `BLOG`,
+    title: `B L O G`,
     subTitle: [`To Be A Hero Or`, `Be Water My Friend`],
     keywords: ["Front-End", "Python", "blog"],
-    description: `This is a blog.`,
+    description: `Some old Reocrds`,
     author: `Kevin`,
     siteUrl: "https://www.gaococ.com",
   },
