@@ -1,7 +1,7 @@
 ---
 title: Ubuntu下实现全局翻墙的配置过程
 date: 2016-8-5 20:20:22
-expert: 主要是如何配置终端的代理
+excerpt: 主要是如何配置终端的代理
 ---
 
 ### shadowsocks-qt5
