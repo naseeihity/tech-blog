@@ -11,9 +11,9 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.17.6",
-    "gatsby-theme-coaco": "^1.0.0",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0"
+    "gatsby": "^2.22.15",
+    "gatsby-theme-coaco": "^1.0.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }
